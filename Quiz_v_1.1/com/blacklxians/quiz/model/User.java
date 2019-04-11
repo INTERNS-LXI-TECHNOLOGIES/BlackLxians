@@ -1,11 +1,5 @@
 package com.blacklxians.quiz.model;
 import java.util.*;
-/**
-
-
-*@author:Akhil
-
-**/
 public class User
 {
 	private String userName;

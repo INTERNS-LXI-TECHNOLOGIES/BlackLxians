@@ -3,19 +3,11 @@ import com.blacklxians.quiz.model.*;
 import com.blacklxians.quiz.view.*;
 import java.util.*;
 import java.io.*;
-
-/** 
-  
- *@author:Akhil 
- 
-**/
-
-
 public class UserController
 {
 	QuizView quizview = new QuizView();
 
-	ArrayList<Quiz> quizes = new ArrayList<Quiz>();
+	ArrayList<QuizSession> quizes = new ArrayList<QuizSession>();
 
 	public void setQuiz()
 	{
@@ -31,7 +23,14 @@ public class UserController
 			case 2:
 			fileName = "file1";
 			break;
+			case 3:
+			fileName="file2";
+			break;
+			default :
+			System.out.println("invalid Option");
+			break;
 		}
+
 
 		
 
@@ -40,7 +39,7 @@ public class UserController
 		try	
 		{
 			prop.load(new FileInputStream(f));
-				String a = prop.getProperty(fileName);
+			String a = prop.getProperty(fileName);
 			File file = new File(a);
 			FileReader fr = new FileReader(file);
 			BufferedReader br = new BufferedReader(fr);
@@ -49,7 +48,7 @@ public class UserController
 			{
 				String[] sp = line.split(",");
 
-				Quiz quiz = new Quiz();
+				QuizSession quiz = new QuizSession();
 				quiz.setQuestion(sp[0]);
 				String [] opt= new String[4];
 				for(int i=1;i<5;i++)
@@ -62,13 +61,18 @@ public class UserController
 				quizes.add(quiz);
 			}	
 		}
+		catch(NullPointerException e)
+		{
+		
+		}
 		catch(Exception e)
 		{
 			e.printStackTrace();
-		}
-		
+
 		}
 
+		
+		}
 
 		public void startQuiz() 
 		{
@@ -81,7 +85,7 @@ public class UserController
 				opt = quizview.displayQuiz(quizes.get(i));
 
 				optValue = quizes.get(i).getOptions()[opt-1];
-				System.out.println("*"+"AnsWer is"+quizes.get(i).getAnswer().equals(optValue)+"!");
+				System.out.println("*"+"AnsWer is  "+quizes.get(i).getAnswer().equals(optValue)+"!");
 
 				if(quizes.get(i).getAnswer().equals(optValue))
 				 {
@@ -94,8 +98,8 @@ public class UserController
 			}
 			quizview.displayScore(count);
 
-
 		}
 		
 
-	}
+
+}

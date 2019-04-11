@@ -1,13 +1,6 @@
 package com.blacklxians.quiz.model;
 import java.util.*;
-/**
-  
-  
- *@author:Akhil 
- 
- */
-
-public class Quiz
+public class QuizSession
 {
 	private String question;
 	private String[] options;
@@ -36,5 +29,4 @@ public class Quiz
 	{
 		return options;
 	}
-	
 }
