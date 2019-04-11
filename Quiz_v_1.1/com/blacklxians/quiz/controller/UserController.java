@@ -3,11 +3,19 @@ import com.blacklxians.quiz.model.*;
 import com.blacklxians.quiz.view.*;
 import java.util.*;
 import java.io.*;
+
+/** 
+  
+ *@author:Akhil 
+ 
+**/
+
+
 public class UserController
 {
 	QuizView quizview = new QuizView();
 
-	ArrayList<QuizSession> quizes = new ArrayList<QuizSession>();
+	ArrayList<Quiz> quizes = new ArrayList<Quiz>();
 
 	public void setQuiz()
 	{
@@ -41,8 +49,8 @@ public class UserController
 			{
 				String[] sp = line.split(",");
 
-				QuizSession quiz = new QuizSession();
-				quiz.setQuestions(sp[0]);
+				Quiz quiz = new Quiz();
+				quiz.setQuestion(sp[0]);
 				String [] opt= new String[4];
 				for(int i=1;i<5;i++)
 					{
@@ -50,7 +58,7 @@ public class UserController
 					  
 					}
 					quiz.setOptions(opt);
-				quiz.setAnswers(sp[5]);
+				quiz.setAnswer(sp[5]);
 				quizes.add(quiz);
 			}	
 		}
@@ -73,9 +81,9 @@ public class UserController
 				opt = quizview.displayQuiz(quizes.get(i));
 
 				optValue = quizes.get(i).getOptions()[opt-1];
-				System.out.println("*"+"AnsWer is"+quizes.get(i).getAnswers().equals(optValue)+"!");
+				System.out.println("*"+"AnsWer is"+quizes.get(i).getAnswer().equals(optValue)+"!");
 
-				if(quizes.get(i).getAnswers().equals(optValue))
+				if(quizes.get(i).getAnswer().equals(optValue))
 				 {
 
 

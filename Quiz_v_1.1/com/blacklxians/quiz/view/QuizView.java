@@ -3,6 +3,16 @@ import com.blacklxians.quiz.controller.*;
 import com.blacklxians.quiz.model.*;
 import java.util.*;
 import java.io.*;
+
+/**
+  
+  
+ *@author:Akhil 
+ 
+  
+ **/
+
+
 public class QuizView
 {
 	Scanner in = new Scanner(System.in);
@@ -19,9 +29,9 @@ public class QuizView
 		return in.nextInt();
 	}
 
-	public int displayQuiz(QuizSession quiz)
+	public int displayQuiz(Quiz quiz)
 	 {
-	 	System.out.println(quiz.getQuestions());
+	 	System.out.println(quiz.getQuestion());
 
 	 	String [] options= quiz.getOptions();
 	 	for(int i=0;i<4;i++)
